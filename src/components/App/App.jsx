@@ -11,8 +11,8 @@ const getValues = () => {
 
 function App() {
   const [values, setValues] = useState(getValues);
-  const onLeaveFeedback = (option) => {
-    setValues({ ...values, [option]: values[option] + 1 });
+  const onUpdateFeedback = (feedbackType) => {
+    setValues({ ...values, [feedbackType]: values[feedbackType] + 1 });
   };
 
   useEffect(() => {
@@ -30,7 +30,7 @@ function App() {
       <Description />
       <Options
         total={totalFeedback}
-        onLeaveFeedback={onLeaveFeedback}
+        onLeaveFeedback={onUpdateFeedback}
         onResetTotal={onResetTotal}
       />
       {totalFeedback > 0 ? (
