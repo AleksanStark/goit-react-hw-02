@@ -1,0 +1,11 @@
+.description_container {
+  max-width: 1586px;
+  margin: 0 auto 30px auto;
+}
+.description_title {
+  max-width: 871px;
+  margin-bottom: 30px;
+}
+.description_text {
+  max-width: 1505px;
+}
