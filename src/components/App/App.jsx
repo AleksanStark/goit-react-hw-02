@@ -6,7 +6,9 @@ import { useEffect, useState } from "react";
 
 const getValues = () => {
   const savedValues = localStorage.getItem("feedbacks");
-  return savedValues !== null ? JSON.parse(savedValues) : {};
+  return savedValues !== null
+    ? JSON.parse(savedValues)
+    : { good: 0, neutral: 0, bad: 0 };
 };
 
 function App() {
@@ -21,8 +23,10 @@ function App() {
 
   const totalFeedback = values.good + values.neutral + values.bad;
   const positiveFeedback = Math.round((values.good / totalFeedback) * 100);
+  const checkPositiveFeedback = !isNaN(positiveFeedback) ? positiveFeedback : 0;
+
   const onResetTotal = () => {
-    setValues({ ...values, good: 0, neutral: 0, bad: 0 });
+    setValues({ good: 0, neutral: 0, bad: 0 });
   };
 
   return (
@@ -36,7 +40,7 @@ function App() {
       {totalFeedback > 0 ? (
         <Feedback
           total={totalFeedback}
-          positiveFeedback={positiveFeedback}
+          positiveFeedback={checkPositiveFeedback}
           dictOfValues={values}
         />
       ) : (

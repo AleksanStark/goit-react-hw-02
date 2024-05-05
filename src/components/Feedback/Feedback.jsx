@@ -1,4 +1,5 @@
 import css from "./Feedback.module.css";
+
 const Feedback = ({
   total,
   positiveFeedback,
@@ -19,9 +20,7 @@ const Feedback = ({
         <span>Total: {total}</span>
       </li>
       <li className={css.feedback_list_item}>
-        <span>
-          Positive: {!isNaN(positiveFeedback) ? positiveFeedback : 0}%
-        </span>
+        <span>Positive: {positiveFeedback}%</span>
       </li>
     </ul>
   );
